@@ -46,17 +46,21 @@ void mostramat(int l, int c, double **matriz) {
 }
 
 
-int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc, char *argv[]) {
-    int l1, c1, l2, c2, met_normal;
+int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc, char *argv[])
+{
+    int l1, c1, l2, c2, met_normal, met_transposta;
+    char *met, *normal;
+    normal = "Normal";
     double time_spent = 0.0;
 
-    if(argc == 5) {
-        met_normal = atoi(argv[0]);
-        l1 = atoi(argv[1]);
-        c1 = atoi(argv[2]);
-        l2 = atoi(argv[3]);
-        c2 = atoi(argv[4]);
-        }
+    if(argc == 6)//atribuicao dos valores passador nos parametros para suas respectivas variaveis
+    {
+      l1 = atoi(argv[1]);
+      c1 = atoi(argv[2]);
+      l2 = atoi(argv[3]);
+      c2 = atoi(argv[4]);
+      met = argv[5];
+    }
 
     else{
         printf("Erro de parametros, favor verificar!/n");
@@ -66,6 +70,8 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
     if (l2 != c1) {
         printf("Não é possível multiplicar as matrizes\n");}
     else {
+        met_normal = strcmp(met, normal);
+        if(met_normal == 0){ //metodo normal
         MatrizDinamica* M1 = criar_matriz(l1, c1);
         MatrizDinamica* M2 = criar_matriz(l2, c2);
         createmat(l1, c1, M1->matriz);
@@ -87,6 +93,7 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
         
         time_spent += (double)(end - begin) / CLOCKS_PER_SEC; //calcula o tempo e divide pela funcao persec para passar para segundos
         printf("o tempo de execução foi de: %lf\n", time_spent);
+        mostramat(l1,c2, MR->matriz);
         }
         else{ //metodo 2
             MatrizDinamica* MR = criar_matriz(c1, l2);
@@ -108,4 +115,4 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
 
 return 0;
 
-}
+}}
