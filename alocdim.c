@@ -75,8 +75,6 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
         MatrizDinamica* M2 = criar_matriz(l2, c2);
         createmat(l1, c1, M1->matriz);
         createmat(l2, c2, M2->matriz);
-        mostramat(l1, c1, M1->matriz);
-        mostramat(l2, c2, M2->matriz);
  
         met_normal = strcmp(met, normal);
         if(met_normal == 0)
@@ -93,7 +91,6 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
         
         time_spent += (double)(end - begin) / CLOCKS_PER_SEC; //calcula o tempo e divide pela funcao persec para passar para segundos
         printf("o tempo de execução foi de: %lf\n", time_spent);
-        mostramat(l1,c2, MR->matriz);
         }
         else{ //metodo 2
             MatrizDinamica* MR = criar_matriz(c1, l2);
@@ -103,13 +100,11 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
                 for (int j = 0; j < c2; j++) {
                     MT->matriz[j][i] = M2->matriz[i][j];}}
                     printf("Transposta:\n");
-                    mostramat(l2, c2, MT->matriz);
             for (int i = 0; i < l1; i++){
                 for (int k = 0; k < c1; k++){
                     for (int l = 0; l < c2; l++){
                         MR->matriz[k][i] += M1->matriz[k][l]*MT->matriz[i][l];
             }}}
-            mostramat(l1,c2, MR->matriz);
             clock_t end = clock();
             time_spent += (double)(end - begin) / CLOCKS_PER_SEC; //calcula o tempo e divide pela funcao persec para passar para segundos
             printf("o tempo de execução foi de: %lf\n", time_spent);
