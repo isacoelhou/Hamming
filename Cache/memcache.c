@@ -87,7 +87,15 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
         clock_t end = clock();
         
         time_spent += (double)(end - begin) / CLOCKS_PER_SEC; //calcula o tempo e divide pela funcao persec para passar para segundos
-        printf("o tempo de execução foi de: %lf\n", time_spent);
+        FILE *pont_arq;
+        pont_arq = fopen("temponormal.txt", "a+"); 
+        if(pont_arq == NULL)
+        {
+            printf("Erro na abertura do arquivo!");
+            return 1;
+        }
+        fseek(pont_arq, 0, SEEK_END);
+        fprintf(pont_arq, "%lf \n", time_spent);
         }
         else{ //metodo 2
             MatrizDinamica* MR = criar_matriz(c1, l2);
@@ -104,7 +112,15 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
             }}}
             clock_t end = clock();
             time_spent += (double)(end - begin) / CLOCKS_PER_SEC; //calcula o tempo e divide pela funcao persec para passar para segundos
-            printf("o tempo de execução foi de: %lf\n", time_spent);
+            FILE *pont_arq;
+            pont_arq = fopen("tempotransp.txt", "a+"); 
+        if(pont_arq == NULL)
+        {
+            printf("Erro na abertura do arquivo!");
+            return 1;
+        }
+        fseek(pont_arq, 0, SEEK_END);
+        fprintf(pont_arq, "\n%lf", time_spent);
     }
 }
 
