@@ -19,7 +19,7 @@ int main()
                 mode = 'o';
 
             sprintf(ordem, "%d", i);
-            sprintf(chamada, "./aloc %s %s %s %s %c", ordem, ordem, ordem, ordem, mode);
+            sprintf(chamada, "./memcache %s %s %s %s %c", ordem, ordem, ordem, ordem, mode);
 
             system(chamada);
             wait(&status);
