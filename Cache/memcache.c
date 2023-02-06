@@ -96,7 +96,7 @@ int main(/* colocar os parametros l1,c1,c2,l2 e transposta ou normal*/ int argc,
             for (int i = 0; i < l2; i++) {
                 for (int j = 0; j < c2; j++) {
                     MT->matriz[j][i] = M2->matriz[i][j];}}
-                    printf("Transposta:\n");
+                    //printf("Transposta:\n");
             for (int i = 0; i < l1; i++){
                 for (int k = 0; k < c1; k++){
                     for (int l = 0; l < c2; l++){
